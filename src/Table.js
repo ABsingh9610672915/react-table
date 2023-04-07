@@ -63,7 +63,7 @@ function Table() {
   };
 
   //search fillter data
- function search() {
+ function search(posts) {
     return posts.filter((row) =>
       row.name.toLowerCase().indexOf((searchquery) > -1)
     );
@@ -75,12 +75,13 @@ function Table() {
   useEffect(() => {
     async function fetchData() {
       const data = await axios.get(fetchUrl);
-      setPosts(data.data.collection.item);
+      setPosts(data.data.collection.item.filter((item) => item.name.toLowerCase().includes(searchquery)))
+     // setPosts(data.data.collection.item);
       
       // setPosts(data)
     }
     fetchData();
-  }, []);
+  }, [searchquery]);
   console.log(posts);
   return (
     <div>

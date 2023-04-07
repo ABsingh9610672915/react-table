@@ -64,7 +64,7 @@ useEffect(()=>{
       subHeaderComponent={
         <input type="text " placeholder='Search here ' className="w-25 form.control"
         value={search}
-        onChange={(e)=>setSearch(e.target.value)}
+        onChange={(e)=> setFilterCountries(filterCountries.filter((item)=> item.name===e.target.value))}
         ></input>
       }
       subHeaderAlign="center"
